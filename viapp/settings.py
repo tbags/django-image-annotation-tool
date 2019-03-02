@@ -25,7 +25,7 @@ SECRET_KEY = '!n%y4282x-wtckoc38%hprry6es@=dn*+vf_l%afe-htq$o*7x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['73.24.10.42', 'hegde.lan']
 
 
 # Application definition

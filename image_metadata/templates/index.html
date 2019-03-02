@@ -30,9 +30,9 @@
         POSSIBILITY OF SUCH DAMAGE.
 
       -->
-    <title>VGG Image Annotator</title>
+    <title>Image Annotator</title>
     <meta name="author" content="Abhishek Dutta">
-    <meta name="description" content="VIA is a standalone image annotator application packaged as a single HTML file (< 200 KB) that runs on most modern web browsers.">
+    <meta name="description" content="copied from: VIA is a standalone image annotator application packaged as a single HTML file (< 200 KB) that runs on most modern web browsers.">
 
     <!-- Google analytics : used in Seebibyte project to measure impact -->
     <script type="text/javascript">
@@ -46,6 +46,7 @@ ga('create', 'UA-20555581-2', 'auto');
 ga('send', 'pageview');
 
     </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- CSS style definition -->
     <style type="text/css">
@@ -465,15 +466,16 @@ ga('send', 'pageview');
           <li class="dropdown"><a title="View" class="drop_menu_item">View &#9662;</a>
             <div class="dropdown-content">
               <a onclick="toggle_region_boundary_visibility()" title="Show or hide region boundaries">Show/hide region boundaries</a>
-	      <a onclick="toggle_region_id_visibility()" title="Show or hide region label">Show/hide region label</a>
-	    </div>
-	  </li>
+          <a onclick="toggle_region_id_visibility()" title="Show or hide region label">Show/hide region label</a>
+          </div>
+          </li>
           <li class="dropdown"><a onclick="show_about_panel()" title="Help">Help &#9662;</a>
             <div class="dropdown-content">
-	      <a onclick="show_getting_started_panel()" title="Getting started with VGG Image Annotator (VIA)">Getting Started</a>
+              <a onclick="show_getting_started_panel()" title="Getting started with VGG Image Annotator (VIA)">Getting Started</a>
               <a onclick="show_about_panel()" title="About VGG Image Annotator (VIA)">About</a>
             </div>
           </li>
+          <li><a onclick="submit_annotation()" title="SubmitAnnotation">Annotate</a></li>
         </ul>
 
       </div> <!-- end of #navbar -->
@@ -505,8 +507,8 @@ ga('send', 'pageview');
     <!-- Middle Panel contains a left-sidebar and image display areas -->
     <div class="middle_panel">
       <div id="leftsidebar">
-	<button onclick="toggle_accordion_panel(this)" class="leftsidebar_accordion active">Image</button>
-	<div class="leftsidebar_accordion_panel show" id="fileinfo">Images not loaded yet!</div>
+    <button onclick="toggle_accordion_panel(this)" class="leftsidebar_accordion active">Image</button>
+    <div class="leftsidebar_accordion_panel show" id="fileinfo">Images not loaded yet!</div>
 
         <button onclick="toggle_accordion_panel(this)" class="leftsidebar_accordion active">Region Shape</button>
         <div class="leftsidebar_accordion_panel show" id="accordion_region_shape_panel">
@@ -607,30 +609,30 @@ ga('send', 'pageview');
             <p>For more details, visit <a href="http://www.robots.ox.ac.uk/~vgg/software/via/">http://www.robots.ox.ac.uk/~vgg/software/via/</a>.</p>
           </div>
 
-	  <div class="text_panel" id="getting_started_panel">
+      <div class="text_panel" id="getting_started_panel">
             <h1>Getting Started</h1>
-	    <ol>
-	      <li>Click [Image > Load or Add Images] in the top menu bar to load a set of images that you wish to annotate.</li>
-	      <li>Press n (or p) to navigate through the loaded images. You can also use the &larr; and &rarr; icons in the top panel toolbar for navigation.</li>
-	      <li>Click <b>Region Attributes</b> in the left panel to reveal a panel in the bottom. Click <b>[Add New]</b> tp add a new attribute. For example:
-		<pre>
-		  object_name
-		  object_color
-		</pre>
-		You can add more region attributes according to you needs.
-	      <li>In the <b>Region Shape</b> section in the left panel, click the rectangular shape</li>
-	      <li>On the image area, keep pressing the right click button as you drag the mouse cursor. This will draw a rectangular region on the image.</li>
-	      <li>This newly created region is automatically selected. Now you can enter the attribute value for this region in the bottom panel. For example:
-		<pre>
-		  object_name = dog
-		  object_color = white
-		</pre>
-		You can annotate multiple regions in this image or other images and assign a value to each pre-defined attribute.</li>
-	      <li>To download the annotated region data, click <b>[Annotation > Save as CSV]</b> in the top menu bar. This will download a text file containing region shape and attribute data.</li>
-	      <li>Next time, you can start from the point your left by first loading the images and then importing the CSV file (downloaded in step 7) by clicking <b>[Annotation > Import]</b>.
-	    </li></ol>
+        <ol>
+          <li>Click [Image > Load or Add Images] in the top menu bar to load a set of images that you wish to annotate.</li>
+          <li>Press n (or p) to navigate through the loaded images. You can also use the &larr; and &rarr; icons in the top panel toolbar for navigation.</li>
+          <li>Click <b>Region Attributes</b> in the left panel to reveal a panel in the bottom. Click <b>[Add New]</b> tp add a new attribute. For example:
+        <pre>
+          object_name
+          object_color
+        </pre>
+        You can add more region attributes according to you needs.
+          <li>In the <b>Region Shape</b> section in the left panel, click the rectangular shape</li>
+          <li>On the image area, keep pressing the right click button as you drag the mouse cursor. This will draw a rectangular region on the image.</li>
+          <li>This newly created region is automatically selected. Now you can enter the attribute value for this region in the bottom panel. For example:
+        <pre>
+          object_name = dog
+          object_color = white
+        </pre>
+        You can annotate multiple regions in this image or other images and assign a value to each pre-defined attribute.</li>
+          <li>To download the annotated region data, click <b>[Annotation > Save as CSV]</b> in the top menu bar. This will download a text file containing region shape and attribute data.</li>
+          <li>Next time, you can start from the point your left by first loading the images and then importing the CSV file (downloaded in step 7) by clicking <b>[Annotation > Import]</b>.
+        </li></ol>
 
-	  </div>
+      </div>
 
         </div>
       </div>
@@ -693,7 +695,7 @@ gh.addEventListener('load', responseListener);
 
 // var ghurl = 'https://api.github.com/';
 // var gistid = 'b5174884f056ef54e1c344c226541a77'
-var ghurl = 'http://localhost:8000/image_metadata/';
+var ghurl = '/image_metadata/';
 // var gistfn = 'via_image_metadata.json';
 
 var gist_rawurl = '';
@@ -701,22 +703,22 @@ var gist_rawsize = -1;
 
 function init_payload() {
     for (var i=0; i<img_url_list.length; ++i) {
-	var url = img_url_list[i];
-	var filename = url.substring(url.lastIndexOf('/')+1);
+    var url = img_url_list[i];
+    var filename = url.substring(url.lastIndexOf('/')+1);
 
-	var img = new ImageMetadata('', url, 0);
-	img.base64_img_data = url;
+    var img = new ImageMetadata('', url, 0);
+    img.base64_img_data = url;
 
-	var img_id = _via_get_image_id(url);
+    var img_id = _via_get_image_id(url);
 
-	_via_img_metadata[img_id] = img;
-	_via_image_id_list.push(img_id);
-	_via_img_count += 1;
-	_via_reload_img_table = true;
+    _via_img_metadata[img_id] = img;
+    _via_image_id_list.push(img_id);
+    _via_img_count += 1;
+    _via_reload_img_table = true;
     }
 
     for (var i=0; i<attributes_list.length; ++i) {
-	_via_region_attributes.add('name');
+    _via_region_attributes.add('name');
     }
 
     _via_image_index = get_random_int(0, img_url_list.length);
@@ -749,25 +751,25 @@ function _via_hook_next_image(img_index) {
 
 function responseListener() {
     if (_dmiat_is_pull_ongoing) {
-	_dmiat_is_pull_ongoing = false;
-	var r = this.responseText;
-	var d = JSON.parse(r);
-	// var jsonstr = d['files'][gistfn]['content'];
-	// gist_rawurl = d['files'][gistfn]['raw_url'];
-	// gist_rawsize = d['files'][gistfn]['size'];
+    _dmiat_is_pull_ongoing = false;
+    var r = this.responseText;
+    var d = JSON.parse(r);
+    // var jsonstr = d['files'][gistfn]['content'];
+    // gist_rawurl = d['files'][gistfn]['raw_url'];
+    // gist_rawsize = d['files'][gistfn]['size'];
 
-	import_annotations_from_json( d );
-	return;
+    import_annotations_from_json( d );
+    return;
     }
 
     if (_dmiat_is_deposit_ongoing) {
-	_dmiat_is_deposit_ongoing = false;
-	var r = this.responseText;
-	var d = JSON.parse(r);
+    _dmiat_is_deposit_ongoing = false;
+    var r = this.responseText;
+    var d = JSON.parse(r);
 
-	// gist_rawurl = d['files'][gistfn]['raw_url'];
-	// gist_rawsize = d['files'][gistfn]['size'];
-	return;
+    // gist_rawurl = d['files'][gistfn]['raw_url'];
+    // gist_rawsize = d['files'][gistfn]['size'];
+    return;
     }
     console.log('Response processed');
 }
@@ -777,17 +779,17 @@ function _dmiat_pull_metadata() {
         if (!_dmiat_is_pull_ongoing) {
             try {
                 _dmiat_is_pull_ongoing = true;
-		var img_metadata = pack_via_metadata('json');
-		var img_metadata_str = JSON.stringify(img_metadata[0]);
-		var timenow = new Date().toUTCString();
+        var img_metadata = pack_via_metadata('json');
+        var img_metadata_str = JSON.stringify(img_metadata[0]);
+        var timenow = new Date().toUTCString();
 
-		// var url = ghurl + 'gists/' + gistid + '?access_token=' + PERSONAL_ACCESS_TOKEN;
-		var url = ghurl
+        // var url = ghurl + 'gists/' + gistid + '?access_token=' + PERSONAL_ACCESS_TOKEN;
+        var url = ghurl
 
-		gh.open('GET', url);
-		gh.send();
+        gh.open('GET', url);
+        gh.send();
             } catch(err) {
-		_dmiat_is_pull_ongoing = false;
+        _dmiat_is_pull_ongoing = false;
                 show_message('Failed to pull metadata.');
                 alert('Failed to pull metadata.');
                 console.log('Failed to pull metadata.');
@@ -800,33 +802,33 @@ function _dmiat_pull_metadata() {
 function _dmiat_deposit_metadata() {
     setTimeout(function() {
         // if (!_dmiat_is_deposit_ongoing &&
-	    // _dmiat_is_remote_metadata_updated()) {
+        // _dmiat_is_remote_metadata_updated()) {
         if (!_dmiat_is_deposit_ongoing) {
             try {
                 _dmiat_is_deposit_ongoing = true;
-		var img_metadata = pack_via_metadata('json');
-		var img_metadata_str = img_metadata[0];
-		var timenow = new Date().toUTCString();
+        var img_metadata = pack_via_metadata('json');
+        var img_metadata_str = img_metadata[0];
+        var timenow = new Date().toUTCString();
 
-		var payload = {};
-		// payload['description'] = 'Last updated on : ' + timenow;
-		// payload['files'] = {};
-		// payload['files'][gistfn] = {};
-		// payload['files'][gistfn]['content'] = img_metadata_str;
-		payload['content'] = img_metadata_str;
+        var payload = {};
+        // payload['description'] = 'Last updated on : ' + timenow;
+        // payload['files'] = {};
+        // payload['files'][gistfn] = {};
+        // payload['files'][gistfn]['content'] = img_metadata_str;
+        payload['content'] = img_metadata_str;
 
-		// var url = ghurl + 'gists/' + gistid + '?access_token=' + PERSONAL_ACCESS_TOKEN;
-		var url = ghurl
+        // var url = ghurl + 'gists/' + gistid + '?access_token=' + PERSONAL_ACCESS_TOKEN;
+        var url = ghurl
 
-		//console.log('sending to url : ' + url);
-		//console.log('payload : ' + JSON.stringify(payload));
-		//console.log('img_metadata (json) : ' + img_metadata);
-		//console.log('img_metadata (str) : ' + img_metadata_str);
-		gh.open('PATCH', url);
+        //console.log('sending to url : ' + url);
+        //console.log('payload : ' + JSON.stringify(payload));
+        //console.log('img_metadata (json) : ' + img_metadata);
+        //console.log('img_metadata (str) : ' + img_metadata_str);
+        gh.open('PATCH', url);
         gh.setRequestHeader("Content-type", "application/json");
-		gh.send(JSON.stringify(payload));
+        gh.send(JSON.stringify(payload));
             } catch(err) {
-		_dmiat_is_deposit_ongoing = false;
+        _dmiat_is_deposit_ongoing = false;
                 show_message('Failed to deposit metadata changes.');
                 alert('Failed to deposit metadata changes.');
                 console.log('Failed to deposit metadata changes.');
@@ -839,16 +841,16 @@ function _dmiat_deposit_metadata() {
 // compare the size of local img_metadata size with that of remote
 function _dmiat_is_remote_metadata_updated() {
     if (gist_rawsize != -1) {
-	var img_metadata = pack_via_metadata('json');
-	var img_metadata_str = JSON.stringify(img_metadata[0]);
+    var img_metadata = pack_via_metadata('json');
+    var img_metadata_str = JSON.stringify(img_metadata[0]);
 
-	if (img_metadata_str.length == gist_rawsize) {
-	    return false;
-	} else {
-	    return true;
-	}
+    if (img_metadata_str.length == gist_rawsize) {
+        return false;
     } else {
-	return true;
+        return true;
+    }
+    } else {
+    return true;
     }
 }
     </script>
@@ -1095,6 +1097,21 @@ function download_all_region_data(type) {
     }
 }
 
+function submit_annotation(type){
+    var all_region_data = pack_via_metadata(type);
+    alert(all_region_data);
+    var all_region_data_blob = new Blob(all_region_data, {type: 'text/json;charset=utf-8'});
+    var saveData = $.ajax({
+      type: 'POST',
+      url: "image/annotate",
+      //data: JSON.stringify(all_region_data), 
+      data: all_region_data[0], 
+      dataType: "text/json;charset=utf-8",
+      success: function() { alert("Save Complete") }
+    });
+
+}
+
 function sel_local_data_file(type) {
     if (invisible_file_input) {
         invisible_file_input.accept='.csv,.json';
@@ -1174,7 +1191,7 @@ function store_local_img_ref(event) {
 
     var discarded_file_count = 0;
     for ( var i=0; i<user_selected_images.length; ++i) {
-	var filetype = user_selected_images[i].type.substr(0,5);
+    var filetype = user_selected_images[i].type.substr(0,5);
         if ( filetype === 'image') {
             var filename = user_selected_images[i].name;
             var size = user_selected_images[i].size;
@@ -1252,7 +1269,7 @@ function import_region_attributes_from_csv(data) {
 function import_annotations_from_file(event) {
     var selected_files = event.target.files;
     for (var i=0; i < selected_files.length; ++i) {
-	var file = selected_files[i];
+    var file = selected_files[i];
         switch(file.type) {
         case 'text/plain':
         case 'text/csv':

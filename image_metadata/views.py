@@ -7,6 +7,7 @@ from rest_framework.response import Response
 
 from .models import ImageMetadata
 
+import json
 
 @api_view(['GET', 'PATCH'])
 @permission_classes((AllowAny, ))
@@ -30,6 +31,16 @@ def image_metadata(request):
         image_metadata.content = request.data['content']
         image_metadata.save()
         return Response(image_metadata.content, status=status.HTTP_201_CREATED)
+
+
+@api_view(['POST'])
+@permission_classes((AllowAny, ))
+def handle_annotation(request):
+    print ('------------ fsdfa: {}'.format(request.body))
+    if request.method == 'POST':
+        json_data = json.loads(request.body)
+        print ('---- JSON DATA ----\nDATA: {}'.format(json_data))
+    return Response({})
 
 def index(request):
     return render(request, 'index.html')
