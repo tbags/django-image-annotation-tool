@@ -13,10 +13,6 @@ source myenv/bin/activate
 ```shell
 pip install -r requirements.txt
 ```
-4. Sync db
-```shell
-python manage.py syncdb
-```
 
 ## Runserver
 ```shell
