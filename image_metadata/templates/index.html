@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <meta charset="UTF-8">
     <!--
         VGG Image Annotator (via)
@@ -33,7 +34,8 @@
     <title>Image Annotator</title>
     <!--meta name="author" content="Abhishek Dutta"-->
     <!--meta name="description" content="copied from: VIA is a standalone image annotator application packaged as a single HTML file (< 200 KB) that runs on most modern web browsers."-->
-    <link href="{% static "//canvas.css" %}" type="text/css" rel="stylesheet">
+    {% load static from staticfiles %}
+    <link href="{% static '/canvas.css' %}" type="text/css" rel="stylesheet">
     <!-- Google analytics : used in Seebibyte project to measure impact -->
     <script type="text/javascript">
       //<!--AUTO_INSERT_GOOGLE_ANALYTICS_JS_HERE-->
