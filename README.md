@@ -1,5 +1,16 @@
 # django-image-annotation-tool
 
+## TODO
+[x] Refactoring css and js
+[ ] Db Related
+  [ ] Migration to MySQL
+  [ ] Handlers for Jason dumps
+
+[ ] Dockerize the repo and client
+  [ ] Upload docker dev scripts on GDrive
+
+[ ] Test workflow Design
+
 ## Setup
 1. Create your own Python3 virtual env like:
 ```shell
