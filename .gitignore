@@ -1,0 +1,4 @@
+annotator/*
+viapp/__pycache__/*
+image_metadata/__pycache__/*
+image_metadata/__pycache__/__init__.cpython-36.pyc
